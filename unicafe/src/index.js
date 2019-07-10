@@ -9,10 +9,13 @@ const Button = ({ onClick, text }) => {
     )
 }
 
-const Statistic = ({text, value}) =>{
-    return(
+const Statistic = ({ text, value, tail }) => {
+    return (
         <>
-            <p>{text}: {value}</p>
+            <tr>
+                <td>{text}</td>
+                <td>{value}{tail}</td>
+            </tr>
         </>
     )
 }
@@ -23,17 +26,25 @@ const Statistics = ({ good, bad, neutral }) => {
         return (
             <div>
                 <h2>Statistics</h2>
-                <Statistic text="Good"value={good}></Statistic>
-                <Statistic text="Neutral"value={neutral}></Statistic>
-                <Statistic text="Bad"value={bad}></Statistic>
-                <Statistic text="All"value={all}></Statistic>
-                <Statistic text="Average"value={(good - bad) / (all)}></Statistic>
-                <Statistic text="Positive%"value={good / all}></Statistic>
+                <table>
+                    <thead>
+                        <th>Stat</th>
+                        <th>Value</th>
+                    </thead>
+                    <tbody>
+                        <Statistic text="Good" value={good}></Statistic>
+                        <Statistic text="Neutral" value={neutral}></Statistic>
+                        <Statistic text="Bad" value={bad}></Statistic>
+                        <Statistic text="All" value={all}></Statistic>
+                        <Statistic text="Average" value={(good - bad) / (all)}></Statistic>
+                        <Statistic text="Positive" value={good / all} tail="%"></Statistic>
+                    </tbody>
+                </table>
             </div>
         )
     }
-    else{
-        return(
+    else {
+        return (
             <div>
                 <p>No Feedback Given</p>
             </div>
