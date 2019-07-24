@@ -11,7 +11,7 @@ const Button = ({ onClick, text }) => {
 
 const App = (props) => {
     const [selected, setSelected] = useState(0)
-    const [votes, setVotes] = useState([0, 0, 0, 0, 0, 0])
+    const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
     const RandomQuote = () => {
         var randomNum = Math.floor(Math.random() * (anecdotes.length - 0));
         console.log(randomNum)
